@@ -1,0 +1,24 @@
+*/bin/*
+*/obj/*
+*.suo
+*.user
+*.tmp
+*resharper*
+*.Load
+*.gpState
+Thumbs.db
+*.dbmdl
+
+# Azure specific things
+*/rcf/*
+*/csx/*
+
+# NuGet things
+packages/*
+!packages/repositories.config
+
+#VS Backup things
+Upgrade*.htm*
+Upgrade*.xml
+Backup
+_Upgradereport*

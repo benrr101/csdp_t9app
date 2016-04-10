@@ -1,0 +1,80 @@
+﻿<!-- The Main Window by: Ben Russell (brr1922) -->
+<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="T9App2.MainWindow"
+        xmlns:local="clr-namespace:T9App2"
+        Title="T9" Height="455" Width="339" ResizeMode="NoResize">
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+    <Window.Background>
+		<SolidColorBrush Color="#FF2D2D30"/>
+	</Window.Background>
+    <DockPanel LastChildFill="True">
+        <TextBox x:Name="OutputBox" HorizontalAlignment="Center" Height="121" TextWrapping="Wrap" VerticalAlignment="Center" Width="311" FontSize="16" BorderBrush="#FF1E1E1E" IsEnabled="False" Background="#FF1E1E1E" DockPanel.Dock="Top" Margin="10" Text="{Binding Path=TypedText, Mode=OneWay}" Foreground="#FFDDDDDD" BorderThickness="5"/>
+		<DockPanel LastChildFill="True" VerticalAlignment="Top">
+			<Grid x:Name="ControlsGrid" DockPanel.Dock="Bottom" Margin="10">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Button Content="Copy Text" HorizontalAlignment="Center" VerticalAlignment="Center" Width="156" Grid.Row="0" Grid.Column="0" FontSize="16" Command="{Binding Path=CopyTextCommand}"/>
+				<ToggleButton Content="Predictive Mode" HorizontalAlignment="Center" VerticalAlignment="Center" Width="156" Grid.Row="0" Grid.Column="1" FontSize="16" IsChecked="{Binding Path=PredictiveMode, Mode=OneWayToSource}"/>
+			</Grid>
+            <Grid x:Name="ButtonGrid" Margin="10,0">
+                <Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Button x:Name="button1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Background="#FFDDDDDD" BorderThickness="2" Height="60">
+					<TextBlock HorizontalAlignment="Center"><Run FontSize="20" BaselineAlignment="Center" Text="1"/></TextBlock>
+				</Button>
+                <Button x:Name="button4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Grid.Row="1" Grid.Column="0" BorderThickness="2" Height="60" Command="{Binding Path=ButtonCommand}" CommandParameter="[ghi]">
+                    <TextBlock><Run FontSize="20" BaselineAlignment="Center" Text="4"/><Run Text=" "/><Run Text="GHI"/></TextBlock>
+				</Button>
+                <Button x:Name="button7" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Grid.Row="2" Grid.Column="0" BorderThickness="2" Height="60" Command="{Binding Path=ButtonCommand}" CommandParameter="[pqrs]">
+					<TextBlock><Run FontSize="20" BaselineAlignment="Center" Text="7"/><Run Text=" "/><Run Text="PQRS"/></TextBlock>
+				</Button>
+                <Button x:Name="buttonStar" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Grid.Row="3" BorderThickness="2" Height="60" Command="{Binding Path=ButtonCommand}" CommandParameter="{x:Static local:ActionEnum.Backspace}">
+                    <TextBlock><Run FontSize="20" BaselineAlignment="Center" Text="*"/><Run Text=" "/><Run Text="&#x2190;"/></TextBlock>
+				</Button>
+                <Button x:Name="button2" Width="103" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="2" Height="60" Command="{Binding Path=ButtonCommand}" CommandParameter="[abc]">
+					<TextBlock><Run FontSize="20" BaselineAlignment="Center" Text="2"/><Run Text=" "/><Run Text="ABC"/></TextBlock>
+				</Button>
+                <Button x:Name="button5" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Grid.Row="1" Grid.Column="1" BorderThickness="2" Height="60" Command="{Binding Path=ButtonCommand}" CommandParameter="[jkl]">
+					<TextBlock><Run FontSize="20" BaselineAlignment="Center" Text="5"/><Run Text=" "/><Run Text="JKL"/></TextBlock>
+				</Button>
+                <Button x:Name="button8" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Grid.Row="2" Grid.Column="1" BorderThickness="2" Height="60" Command="{Binding Path=ButtonCommand}" CommandParameter="[tuv]">
+					<TextBlock><Run FontSize="20" BaselineAlignment="Center" Text="8"/><Run Text=" "/><Run Text="TUV"/></TextBlock>
+				</Button>
+                <Button x:Name="button0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Grid.Row="3" Grid.Column="1" BorderThickness="2" Height="60" Command="{Binding Path=ButtonCommand}" CommandParameter="{x:Static local:ActionEnum.NextWord}">
+					<TextBlock><Run FontSize="20" BaselineAlignment="Center" Text="0"/><Run Text=" "/><Run Text="~"/></TextBlock>
+				</Button>
+                <Button x:Name="button3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Grid.Column="2" BorderThickness="2" Height="60" Command="{Binding Path=ButtonCommand}" CommandParameter="[def]">
+					<TextBlock><Run FontSize="20" BaselineAlignment="Center" Text="3"/><Run Text=" "/><Run Text="DEF"/></TextBlock>
+				</Button>
+                <Button x:Name="button6" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Grid.Row="1" Grid.Column="2" BorderThickness="2" Height="60" Command="{Binding Path=ButtonCommand}" CommandParameter="[mno]">
+					<TextBlock><Run FontSize="20" BaselineAlignment="Center" Text="6"/><Run Text=" "/><Run Text="MNO"/></TextBlock>
+				</Button>
+                <Button x:Name="button9" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Grid.Row="2" Grid.Column="2" BorderThickness="2" Height="60" Command="{Binding Path=ButtonCommand}" CommandParameter="[wxyz]">
+					<TextBlock><Run FontSize="20" BaselineAlignment="Center" Text="9"/><Run Text=" "/><Run Text="WXYZ"/></TextBlock>
+				</Button>
+                <Button x:Name="buttonPound" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Grid.Row="3" Grid.Column="2" BorderThickness="2" Height="60" Command="{Binding Path=ButtonCommand}" CommandParameter="{x:Static local:ActionEnum.InsertSpace}">
+                    <TextBlock><Run FontSize="20" BaselineAlignment="Center" Text="#"/><Run Text=" "></Run><Run Text="&#9251;"/>
+                    </TextBlock>
+				</Button>
+			</Grid>
+		</DockPanel>
+	</DockPanel>
+</Window>
